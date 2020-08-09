@@ -1,13 +1,5 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
-
 import React from 'react';
-import { View, Text, TouchableOpacity } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native';
 
 const loadFood = async function(){
 	const res = await fetch('https://api.jsonbin.io/b/5f2c36626f8e4e3faf2cb42e');
