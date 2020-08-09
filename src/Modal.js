@@ -2,6 +2,8 @@
 import React from 'react';
 import {View, Text, TouchableHighlight, SectionList} from 'react-native';
 import styles from '../common/styles';
+import SubCategory from './SubCategory'
+import Category from './Category'
 
 class ModalView extends React.Component {
   constructor(props){
@@ -20,7 +22,7 @@ class ModalView extends React.Component {
       console.log("object", obj)
       return {
         title: obj.category.categoryName,
-        data: obj.category.subcategories[0].items,
+        data: obj.category.subcategories,
         categoryData: obj.category,
       };
     });
@@ -33,19 +35,21 @@ class ModalView extends React.Component {
     return (
       <View style={styles.modalView}>
         <TouchableHighlight
-          style={{backgroundColor: '#2196F3'}}
           onPress={() => {
             this.props.setModalVisible(false);
           }}>
-          <Text style={styles.textStyle}>X</Text>
+          <Text style={{fontSize: 25}}>X</Text>
         </TouchableHighlight>
+        <Text style={{fontSize: 25}}>Approved Foods List</Text>
         <View>
           <SectionList
             sections={this.state.sectionsData}
             keyExtractor={(item, index) => item + index}
-            renderItem={({item}) => <Text>{item}</Text>}
-            renderSectionHeader={({section: {title}}) => (
-              <Text style={styles.header}>{title}</Text>
+            renderItem={({item}) => <SubCategory items={item} />}
+            renderSectionHeader={({section: {title, categoryData}}) => (
+              <TouchableHighlight style={styles.categoryContainer} onPress={()=>{this.setState({clicked: true})}}>
+                <Category category={title} colorCode={categoryData.colorCode}/>
+              </TouchableHighlight>
             )}
           />
         </View>

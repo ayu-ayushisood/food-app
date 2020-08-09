@@ -31,7 +31,7 @@ class App extends React.Component {
 
   	render() {
     	return (
-      		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#dedede'}}>
 				<TouchableHighlight
 				style={styles.openButton}
 				onPress={() => {
@@ -43,10 +43,10 @@ class App extends React.Component {
 					animationType="slide"
 					transparent={true}
 					visible={this.state.modalVisible}>
-					<View style={styles.centeredView}>
+					<View>
 						<ModalView
-						foodData={this.state.foodData}
-						setModalVisible={this.setModalVisible}
+							foodData={this.state.foodData}
+							setModalVisible={this.setModalVisible}
 						/>
 					</View>
 				</Modal>

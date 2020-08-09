@@ -1,36 +1,42 @@
 import { StyleSheet } from 'react-native'
 module.exports = StyleSheet.create({
-    centeredView: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
-      },
-      modalView: {
-        backgroundColor: "white",
+    // centeredView: {
+    //     flex: 1,
+    //     justifyContent: "center",
+    //     alignItems: "center",
+    // },
+    modalView: {
+        backgroundColor: "#dedede",
         padding: 35,
-        alignItems: "center",
+        // alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
-          width: 0,
-          height: 2
+            width: 0,
+            height: 2
         },
+        // marginTop: 50,
+        marginBottom: 20,
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5
-      },
-      openButton: {
+    },
+    openButton: {
         backgroundColor: "#F194FF",
         borderRadius: 10,
         padding: 20,
         elevation: 2,
-      },
-      textStyle: {
+    },
+    textStyle: {
         color: "white",
         fontWeight: "bold",
-      },
-      modalText: {
+    },
+    modalText: {
         marginBottom: 15,
         textAlign: "center"
-      }
+    },
+    categoryContainer: {
+        padding: 15,
+        backgroundColor: 'white'
+    }
 
 });
