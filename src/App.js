@@ -1,54 +1,58 @@
 import React from 'react';
 import { View, Text, Modal, TouchableHighlight } from 'react-native';
 import styles from '../common/styles'
-
+import ModalView from './Modal'
 class App extends React.Component {
 	constructor(props){
 		super(props);
 
 		this.state = {
-			modalVisible: false
+			modalVisible: false,
+			foodData: []
 		};
 	}
 
 	async loadFood(){
-		const res = await fetch('https://api.jsonbin.io/b/5f2c36626f8e4e3faf2cb42e');
+		this.setState({isLoading: true});
+		const res = await fetch(
+		'https://api.jsonbin.io/b/5f2c36626f8e4e3faf2cb42e',
+		);
 		const data = await res.json();
-		this.setModalVisible(true);
+		this.setState({
+		foodData: data.categories,
+		isLoading: false,
+		modalVisible: true,
+		});
 	}
 
 	setModalVisible = (visible) => {
 		this.setState({ modalVisible: visible });
 	}
 
-	render(){
-		return(
-		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-			<TouchableHighlight style={styles.openButton} onPress={ () => {this.loadFood()} }> 
-				<Text>Launch</Text> 
-			</TouchableHighlight>
-			<Modal
-				animationType="slide"
-				transparent={true}
-				visible={this.state.modalVisible}
-			>
-				<View style={styles.centeredView}>
-					<View style={styles.modalView}>
-						<TouchableHighlight
-							style={{ backgroundColor: "#2196F3" }}
-							onPress={() => {
-								this.setModalVisible(!this.state.modalVisible);
-							}}
-						>
-							<Text style={styles.textStyle}>X</Text>
-						</TouchableHighlight>
-						<Text style={styles.modalText}>Hello World!</Text>
+  	render() {
+    	return (
+      		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+				<TouchableHighlight
+				style={styles.openButton}
+				onPress={() => {
+					this.loadFood();
+				}}>
+				<Text>Launch</Text>
+				</TouchableHighlight>
+				<Modal
+					animationType="slide"
+					transparent={true}
+					visible={this.state.modalVisible}>
+					<View style={styles.centeredView}>
+						<ModalView
+						foodData={this.state.foodData}
+						setModalVisible={this.setModalVisible}
+						/>
 					</View>
-				</View>
-			</Modal>
-		</View>
-		)
-	}
+				</Modal>
+			</View>
+    	);
+  }
 }
 
 export default App
