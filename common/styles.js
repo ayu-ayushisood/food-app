@@ -56,12 +56,18 @@ module.exports = StyleSheet.create({
     },
     subcategoryName: {
         color: '#F96566',
-        fontSize: 22
+        fontSize: 22,
+        padding: 15
     },
     subcategoryBox: {
         backgroundColor: 'white', 
         padding: 10,
         borderRadius: 3
+    },
+    foodItems: {
+        padding:15, 
+        borderBottomWidth: 1, 
+        borderBottomColor: '#dedede'
     }
 
 });
