@@ -24,6 +24,7 @@ class ModalView extends React.Component {
         title: obj.category.categoryName,
         data: obj.category.subcategories,
         categoryData: obj.category,
+        servingSize: obj.servingSize
       };
     });
 
@@ -48,7 +49,7 @@ class ModalView extends React.Component {
             renderItem={({item}) => <SubCategory items={item} />}
             renderSectionHeader={({section: {title, categoryData}}) => (
               <TouchableHighlight style={styles.categoryContainer} onPress={()=>{this.setState({clicked: true})}}>
-                <Category category={title} colorCode={categoryData.colorCode}/>
+                <Category category={title} colorCode={categoryData.colorCode} servingSize={categoryData.servingSize} />
               </TouchableHighlight>
             )}
           />

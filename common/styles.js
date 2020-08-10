@@ -1,27 +1,21 @@
 import { StyleSheet } from 'react-native'
 module.exports = StyleSheet.create({
-    // centeredView: {
-    //     flex: 1,
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    // },
+    
     modalView: {
         backgroundColor: "#dedede",
         padding: 35,
-        // alignItems: "center",
         shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 2
         },
-        // marginTop: 50,
         marginBottom: 20,
         shadowOpacity: 0.25,
         shadowRadius: 3.84,
         elevation: 5
     },
     openButton: {
-        backgroundColor: "#F194FF",
+        backgroundColor: "#F96566",
         borderRadius: 10,
         padding: 20,
         elevation: 2,
@@ -36,7 +30,38 @@ module.exports = StyleSheet.create({
     },
     categoryContainer: {
         padding: 15,
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        borderRadius: 8,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 2,
+        },
+        shadowOpacity: 0.27,
+        shadowRadius: 4.65,
+        elevation: 5,
+    },
+    categoryImage: {
+        width: 50, 
+        height: 50
+    },
+    categoryBox: {
+        flexDirection: 'row', 
+        alignItems: 'center'
+    },
+    categoryName: {
+        marginLeft: 10,
+        color: '#F96566',
+        fontSize: 20
+    },
+    subcategoryName: {
+        color: '#F96566',
+        fontSize: 22
+    },
+    subcategoryBox: {
+        backgroundColor: 'white', 
+        padding: 10,
+        borderRadius: 3
     }
 
 });
