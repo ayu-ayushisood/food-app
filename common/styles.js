@@ -1,8 +1,14 @@
 import { StyleSheet } from 'react-native'
 module.exports = StyleSheet.create({
-    
+
+    mainContainer: {
+        flex: 1, 
+        alignItems: 'center', 
+        justifyContent: 'center', 
+        backgroundColor: '#EAE9EF'
+    },
     modalView: {
-        backgroundColor: "#dedede",
+        backgroundColor: "#EAE9EF",
         padding: 25,
         marginBottom: 20
     },
@@ -21,10 +27,18 @@ module.exports = StyleSheet.create({
         textAlign: "center"
     },
     categoryContainer: {
-        padding: 15,
+        padding: 10,
         backgroundColor: 'white',
         borderRadius: 8,
-        marginTop: 15
+        marginTop: 15,
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 1,
+        },
+        shadowOpacity: 0.20,
+        shadowRadius: 1.41,
+        elevation: 2,
     },
     categoryImage: {
         width: 50, 
@@ -53,6 +67,12 @@ module.exports = StyleSheet.create({
         padding:15, 
         borderBottomWidth: 1, 
         borderBottomColor: '#dedede'
-    }
+    },
+    searchInput: {
+        height: 50,
+        borderRadius: 10,
+        padding: 15,
+        backgroundColor: '#E8EFF5'
+    }    
 
 });

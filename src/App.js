@@ -31,7 +31,7 @@ class App extends React.Component {
 
   	render() {
     	return (
-      		<View style={{flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#dedede'}}>
+      		<View style={styles.mainContainer}>
 				<TouchableHighlight
 				style={styles.openButton}
 				onPress={() => {
