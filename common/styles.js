@@ -3,7 +3,7 @@ module.exports = StyleSheet.create({
     
     modalView: {
         backgroundColor: "#dedede",
-        padding: 35,
+        padding: 25,
         shadowColor: "#000",
         shadowOffset: {
             width: 0,

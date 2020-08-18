@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {View, Text, TouchableHighlight, SectionList} from 'react-native';
+import {View, Text, TouchableHighlight, SectionList, TouchableOpacity} from 'react-native';
 import styles from '../common/styles';
 import SubCategory from './SubCategory'
 import Category from './Category'
@@ -31,27 +31,35 @@ class ModalView extends React.Component {
     this.setState({sectionsData});
   };
 
+  collapse(name){
+    let stateObj = {};
+    stateObj[`${name}`] = !this.state[`${name}`];
+    this.setState(stateObj, ()=> {console.log("state::", this.state)})
+    console.log("state obj", stateObj)
+  }
+
   render() {
-    console.log(this.state.sectionsData)
     return (
       <View style={styles.modalView}>
         <TouchableHighlight
-          onPress={() => {
+          onPress={ () => {
             this.props.setModalVisible(false);
           }}>
-          <Text style={{fontSize: 25}}>X</Text>
+          <Text style={{fontSize: 25, marginTop: 20}}>X</Text>
         </TouchableHighlight>
-        <Text style={{fontSize: 25}}>Approved Foods List</Text>
+        <Text style={{fontSize: 25, marginBottom: 20, fontWeight: '600'}}>Approved Foods List</Text>
         <View>
           <SectionList
-            sections={this.state.sectionsData}
-            keyExtractor={(item, index) => item + index}
-            renderItem={({item}) => <SubCategory items={item} />}
-            renderSectionHeader={({section: {title, categoryData}}) => (
-              <TouchableHighlight style={styles.categoryContainer} onPress={()=>{this.setState({clicked: true})}}>
+            sections={ this.state.sectionsData }
+            keyExtractor={(item, index) => item + index }
+            
+            renderSectionHeader={ ({section: {title, categoryData}}) => (
+              <TouchableOpacity style={styles.categoryContainer} onPress={ ()=> this.collapse(title)} >
                 <Category category={title} colorCode={categoryData.colorCode} servingSize={categoryData.servingSize} />
-              </TouchableHighlight>
+              </TouchableOpacity>
             )}
+
+            renderItem={ ({item, title, section}) => this.state[`${section.title}`] ? <SubCategory items={item}/> : null}
           />
         </View>
       </View>
