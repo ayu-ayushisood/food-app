@@ -4,15 +4,7 @@ module.exports = StyleSheet.create({
     modalView: {
         backgroundColor: "#dedede",
         padding: 25,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2
-        },
-        marginBottom: 20,
-        shadowOpacity: 0.25,
-        shadowRadius: 3.84,
-        elevation: 5
+        marginBottom: 20
     },
     openButton: {
         backgroundColor: "#F96566",
@@ -32,14 +24,7 @@ module.exports = StyleSheet.create({
         padding: 15,
         backgroundColor: 'white',
         borderRadius: 8,
-        shadowColor: "#000",
-        shadowOffset: {
-            width: 0,
-            height: 2,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-        elevation: 5,
+        marginTop: 15
     },
     categoryImage: {
         width: 50, 
