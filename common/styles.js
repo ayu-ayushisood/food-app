@@ -7,6 +7,12 @@ module.exports = StyleSheet.create({
         justifyContent: 'center', 
         backgroundColor: '#EAE9EF'
     },
+    headline: {
+        fontSize: 25, 
+        marginTop: 20, 
+        marginBottom: 20, 
+        fontWeight: '600'
+    },
     modalView: {
         backgroundColor: "#EAE9EF",
         padding: 25,

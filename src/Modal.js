@@ -39,22 +39,23 @@ class ModalView extends React.Component {
 
   searchFood = (searchQuery) => {
     let sectionsData = this.state.sectionsData
-		let matchedItemsArray = [];
-		
+    let matchedItemsArray = [];
+  
     searchQuery == '' ? 
       this.setState({matchedItemsArray: sectionsData})
     :
       this.setState({matchedItemsArray: sectionsData}, () => {
         sectionsData.map((item) => {
-					console.log(item)
           if(item.title.includes(searchQuery)){
             matchedItemsArray.push(item)
           }
+          
         })
         this.setState({matchedItemsArray})
       })
+    
   }
-
+  
   render() {
     return (
       <View style={styles.modalView}>
@@ -71,19 +72,19 @@ class ModalView extends React.Component {
 					style={styles.searchInput}
           />   
         <View>
-			<SectionList
-				sections={ this.state.matchedItemsArray }
-				keyExtractor={(item, index) => item + index }
-				
-				renderSectionHeader={ ({section: {title, categoryData}}) => (
-					<TouchableOpacity style={styles.categoryContainer} onPress={ ()=> this.collapse(title)} >
-						<Category category={title} colorCode={categoryData.colorCode} servingSize={categoryData.servingSize} />
-					</TouchableOpacity>
-				)}
+        <SectionList
+          sections={ this.state.matchedItemsArray }
+          keyExtractor={(item, index) => item + index }
+          
+          renderSectionHeader={ ({section: {title, categoryData}}) => (
+            <TouchableOpacity style={styles.categoryContainer} onPress={ ()=> this.collapse(title)} >
+              <Category category={title} colorCode={categoryData.colorCode} servingSize={categoryData.servingSize} />
+            </TouchableOpacity>
+          )}
 
-				renderItem={ ({item, section}) => this.state[`${section.title}`] ? <SubCategory items={item}/> : null}
-			/>
-        </View>
+          renderItem={ ({item, index, section}) => this.state[`${section.title}`] ? <SubCategory items={item} key={index}/> : null}
+        />
+			  </View>
       </View>
     );
   }
